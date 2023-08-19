@@ -46,6 +46,21 @@ class Room {
     getItemByName(name) {
 
         // Fill this in
+        let result = this.items.reduce((accum, item) => {
+            if (item.name === name) {
+                return item;
+            }
+
+            return accum;
+        });
+
+        return result;
+    }
+
+    removeItem(itemName) {
+        const item = this.getItemByName(itemName);
+        const index = this.items.indexOf(item);
+        this.items = this.items.slice(0, index).concat(this.items.slice(index + 1));
     }
 
 }
